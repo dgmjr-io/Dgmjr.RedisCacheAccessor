@@ -1,0 +1,364 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Get or Set a Value from the Backroom's Redis Cache",
+        "contact": {
+            "name": "David G. Moore, Jr.",
+            "url": "https://thebackroom.bot",
+            "email": "justin@thebackroom.bot"
+        },
+        "description": "This service is used to cache HTTP responses.  It can be used in two ways:\r\n # GET\r\nUsed to cache <c>GET</c> requests from an HTTP service.  Cannnot be used to send any headers or <c>post</c> any information.  Can be used for simple <c>get</b> requests only.\r\n # PUT or POST\r\n These methods can be used to call <c>PUT</c> or <c>POST</c> requests to an HTTP service.  They receive a payload of the type <c>HttpRequestMessage</c>, which contains all the information required to <c>put</c> or <c>post</c> to the requested HTTP endpoint.  \r\n\r\n*Note if sending header information along with a <c>get</c> request, these can be used for that purpose too.  Simply set their HTTP methods to <c>get</c>*.",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "https://rediscacheaccessor.azurewebsites.net"
+        }
+    ],
+    "paths": {
+        "/cache": {
+            "get": {
+                "tags": [
+                    "Cache"
+                ],
+                "parameters": [
+                    {
+                        "name": "cacheKey",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cachedHttpUrl",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "style": "form",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/json",
+                                "text/plain",
+                                "application/xml",
+                                "text/html",
+                                "application/x-www-form-urlencoded",
+                                "multipart/form-data",
+                                "application/octet-stream",
+                                "video/mp4",
+                                "video/mpeg",
+                                "video/ogg",
+                                "image/jpeg",
+                                "image/png",
+                                "image/gif"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cache"
+                ],
+                "parameters": [
+                    {
+                        "name": "cacheConnectionString",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cacheKey",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cachedHttpUrl",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expiration",
+                        "in": "query",
+                        "style": "form",
+                        "schema": {
+                            "$ref": "#/components/schemas/TimeSpan"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/HttpRequestMessage"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "HttpContent": {
+                "type": "object",
+                "properties": {
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringStringIEnumerableKeyValuePair"
+                        },
+                        "nullable": true,
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "HttpMethod": {
+                "type": "object",
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "HttpRequestMessage": {
+                "type": "object",
+                "properties": {
+                    "version": {
+                        "$ref": "#/components/schemas/Version"
+                    },
+                    "versionPolicy": {
+                        "$ref": "#/components/schemas/HttpVersionPolicy"
+                    },
+                    "content": {
+                        "$ref": "#/components/schemas/HttpContent"
+                    },
+                    "method": {
+                        "$ref": "#/components/schemas/HttpMethod"
+                    },
+                    "requestUri": {
+                        "type": "string",
+                        "format": "uri",
+                        "nullable": true
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StringStringIEnumerableKeyValuePair"
+                        },
+                        "nullable": true,
+                        "readOnly": true
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true,
+                        "readOnly": true,
+                        "deprecated": true
+                    },
+                    "options": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true,
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "HttpVersionPolicy": {
+                "enum": [
+                    0,
+                    1,
+                    2
+                ],
+                "type": "integer",
+                "format": "int32"
+            },
+            "StringStringIEnumerableKeyValuePair": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "value": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "TimeSpan": {
+                "type": "object",
+                "properties": {
+                    "ticks": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "days": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "hours": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "milliseconds": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "microseconds": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "nanoseconds": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "minutes": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "seconds": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "totalDays": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    },
+                    "totalHours": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    },
+                    "totalMilliseconds": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    },
+                    "totalMicroseconds": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    },
+                    "totalNanoseconds": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    },
+                    "totalMinutes": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    },
+                    "totalSeconds": {
+                        "type": "number",
+                        "format": "double",
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "Version": {
+                "type": "object",
+                "properties": {
+                    "major": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "minor": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "build": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "revision": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "majorRevision": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    },
+                    "minorRevision": {
+                        "type": "integer",
+                        "format": "int32",
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+﻿<!--
+ * Dgmjr.RedisCacheAccessor.Core.csproj
+ * 
+ *   Created: 2023-03-18-01:00:45
+ *   Modified: 2023-03-18-01:00:45
+ * 
+ *   Author: David G. Moore, Jr. <david@dgmjr.io>
+ *   
+ *   Copyright © 2022-2023 David G. Moore, Jr., All Rights Reserved
+ *      License: MIT (https://opensource.org/licenses/MIT)
+-->
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="Dgmjr.Http.Meta" />
+    <PackageReference Include="System.Net.Mime.MediaTypeNames" />
+    <PackageReference Include="AnyOf" />
+    <PackageReference Include="AnyOf.System.Text.Json" />
+    <PackageReference Include="StackExchange.Redis" VersionOverride="2.6.96" />
+    <PackageReference Include="Dgmjr.System.Extensions" />
+  </ItemGroup>
+
+</Project>
