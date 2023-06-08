@@ -1,0 +1,22 @@
+<!--
+ * Dgmjr.CacheAccessor.csproj
+ *
+ *   Created: 2023-06-07-08:45:55
+ *   Modified: 2023-06-07-08:45:56
+ *
+ *   Author: David G. Moore, Jr. <david@dgmjr.io>
+ *
+ *   Copyright © 2022 - 2023 David G. Moore, Jr., All Rights Reserved
+ *      License: MIT (https://opensource.org/licenses/MIT)
+-->
+
+<Project Sdk="Microsoft.Build.Traversal">
+    <ItemGroup>
+        <ProjectReference Include="./App/Dgmjr.Caching.GetOrSetFromCache.App.csproj" />
+        <ProjectReference Include="./Common/Dgmjr.CacheAccessor.Abstractions.csproj" />
+        <ProjectReference Include="./Common/Dgmjr.Caching.Common.csproj" />
+        <ProjectReference Include="./Memory/Dgmjr.Caching.Memory.csproj" />
+        <ProjectReference Include="./Redis/Dgmjr.RedisCacheAccessor.Core.csproj" />
+        <ProjectReference Include="./Redis/Dgmjr.RedisCacheAccessor.Core.csproj" />
+    </ItemGroup>
+</Project>

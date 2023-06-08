@@ -1,26 +1,23 @@
-/* 
+/*
  * MimeTypesFilter.cs
- * 
+ *
  *   Created: 2023-03-18-06:41:19
  *   Modified: 2023-03-18-06:41:19
- * 
+ *
  *   Author: David G. Moore, Jr. <david@dgmjr.io>
- *   
+ *
  *   Copyright © 2022-2023 David G. Moore, Jr., All Rights Reserved
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
-namespace Dgmjr.GetOrSetFromRedisCache;
+namespace Dgmjr.Caching.GetOrSetFromCache.App;
 
-using Dgmjr.GetOrSetFromRedisCache.Controllers;
+using Dgmjr.Caching.GetOrSetFromCache.App.Controllers;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 [RegexDto(@"^(?:([0-9]{0,4}\:)?(?:[0-9]{0,100}\:)?(?:[0-9]{0,1000})$")]
-public partial struct TimeSpanDto
-{
-
-}
+public partial struct TimeSpanDto { }
 
 public class TimeSpanSchemaFilter : ISchemaFilter
 {
