@@ -10,4 +10,4 @@
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-namespace Dgmjr.Caching.GetOrSetFromCache.App;
+namespace CacheAccesor.GetOrSetFromCache.App;

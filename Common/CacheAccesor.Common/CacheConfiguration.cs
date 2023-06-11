@@ -10,11 +10,9 @@
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-using Dgmjr.Cachingc;
+namespace CacheAccesor;
 
-namespace Dgmjr.Caching;
-
-public class CacheConfiguration
+public abstract class CacheConfiguration : ICacheConfiguration1
 {
     public Cachelocation CacheLocation { get; set; } = CacheLocation.Memory;
     public string? ConnectionString { get; set; }

@@ -10,9 +10,10 @@
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-namespace Dgmjr.Caching;
+namespace CacheAccesor;
 
-public struct KeyExpirationTuple
+
+public struct KeyExpirationTuple : IKeyExpirationTuple
 {
     public string Key { get; set; }
     public TimeSpan OriginalTimeToLive { get; set; }

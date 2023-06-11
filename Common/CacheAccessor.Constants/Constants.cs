@@ -10,9 +10,9 @@
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-namespace Dgmjr.Caching;
+namespace CacheAccesor;
 
-public static class Constants
+public static partial class Constants
 {
     public const string AZURE_APPCONFIGURATION_CONNECTION_STRING = nameof(
         AZURE_APPCONFIGURATION_CONNECTION_STRING

@@ -25,7 +25,7 @@ using Microsoft.Net.Http.Headers;
 using static System.Net.HttpStatusCode;
 using MediaTypeNames = System.Net.Mime.MediaTypes.MediaTypeNames;
 
-namespace Dgmjr.Caching;
+namespace CacheAccesor;
 
 public class SerializableHttpResponse
 {

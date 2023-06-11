@@ -2,7 +2,7 @@ using System.Net.Http.Headers;
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dgmjr.Caching.GetOrSetFromCache.App.Controllers;
+namespace CacheAccesor.GetOrSetFromCache.App.Controllers;
 
 using System;
 using System.ComponentModel.DataAnnotations;

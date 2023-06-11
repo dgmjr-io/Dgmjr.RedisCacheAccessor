@@ -9,9 +9,9 @@
  *   Copyright © 2022-2023 David G. Moore, Jr., All Rights Reserved
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
-namespace Dgmjr.Caching.GetOrSetFromCache.App;
+namespace CacheAccesor.GetOrSetFromCache.App;
 
-using Dgmjr.Caching.GetOrSetFromCache.App.Controllers;
+using CacheAccesor.GetOrSetFromCache.App.Controllers;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;

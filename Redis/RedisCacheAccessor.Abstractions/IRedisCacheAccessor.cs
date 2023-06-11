@@ -12,7 +12,7 @@
  */
 
 using System.Net.Http;
-using Dgmjr.Caching.Abstractions;
+using CacheAccesor.Abstractions;
 
 namespace Dgmjr.RedisCacheAccessor.Abstractions;
 

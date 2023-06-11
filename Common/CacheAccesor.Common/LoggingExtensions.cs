@@ -10,7 +10,7 @@
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-namespace Dgmjr.Caching;
+namespace CacheAccesor;
 
 using System;
 using System.Net.Http;

@@ -10,12 +10,15 @@
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-namespace Dgmjr.Caching;
+namespace CacheAccesor;
 
-public enum CacheLocation
+public static partial class Constants
 {
-    Memory,
-    Redis,
-    AzureBlobs,
-    AzureFiles
+    public enum CacheLocation
+    {
+        Memory,
+        Redis,
+        AzureBlobs,
+        AzureFiles
+    }
 }

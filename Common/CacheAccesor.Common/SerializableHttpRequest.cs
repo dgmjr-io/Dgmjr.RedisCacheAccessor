@@ -12,7 +12,7 @@ using System.Net.Http.Headers;
  *      License: MIT (https://opensource.org/licenses/MIT)
  */
 
-namespace Dgmjr.Caching;
+namespace CacheAccesor;
 
 using System.Net.Http;
 using System.Text;

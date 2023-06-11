@@ -16,32 +16,28 @@ namespace Dgmjr.CacheAccessor.Abstractions;
 
 public interface ICacheAccessor
 {
-    Task<bool> DeleteFromCacheAsync(string cacheConnectionString, string cacheKey);
+    Task<bool> DeleteFromCacheAsync(string cacheKey);
     Task<SerializableHttpResponse> GetFromCacheOrConstantValueAsync(
-        string cacheConnectionString,
         string cacheKey,
         string constantValue,
         string mimeType = "text/plain",
         TimeSpan? expiration = null
     );
     Task<SerializableHttpResponse> GetFromCacheOrConstantValueAsync(
-        string cacheConnectionString,
         string cacheKey,
-        string constatntValue,
+        string constantValue,
         TimeSpan? expiration = null
     );
     Task<SerializableHttpResponse> GetFromCacheOrHttpAsync(
-        string cacheConnectionString,
         string cacheKey,
         HttpRequestMessage requestMessage,
         TimeSpan? expiration = null
     );
     Task<SerializableHttpResponse> GetFromCacheOrHttpAsync(
-        string cacheConnectionString,
         string cacheKey,
         string requestUrl,
         TimeSpan? expiration = null
     );
-    Task<DateTimeOffset?> GetKeyExpiration(string cacheConnectionString, string key);
-    Task<string[]> GetKeysFromCacheAsync(string cacheConnectionString, string pattern = "*");
+    Task<DateTimeOffset?> GetKeyExpiration(string key);
+    Task<string[]> GetKeysFromCacheAsync(string pattern = "*");
 }

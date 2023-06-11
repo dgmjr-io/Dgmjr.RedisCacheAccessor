@@ -1,9 +1,9 @@
 using Azure.Identity;
-using Dgmjr.Caching.GetOrSetFromCache.App;
+using CacheAccesor.GetOrSetFromCache.App;
 using Dgmjr.RedisCacheAccessor.Core;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.Logging;
-using Constants = Dgmjr.Caching.GetOrSetFromCache.App.Constants;
+using Constants = CacheAccesor.GetOrSetFromCache.App.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
