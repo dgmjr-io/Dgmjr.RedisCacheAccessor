@@ -23,7 +23,7 @@ public static partial class LoggingExtensions
         1,
         LogLevel.Information,
         "PUT cacheKey={cacheKey} cacheValue={cacheValue} expiration={expiration}",
-        EventName = HttpRequestMethodNames.Put
+        HttpRequestMethodNames.Put
     )]
     public static partial void LogPut(
         this ILogger logger,
@@ -36,7 +36,7 @@ public static partial class LoggingExtensions
         2,
         LogLevel.Information,
         "GET cacheKey={cacheKey} cacheValue={cacheValue}",
-        EventName = HttpRequestMethodNames.Get
+        HttpRequestMethodNames.Get
     )]
     public static partial void LogGet(this ILogger logger, string cacheKey, object cacheValue);
 
@@ -44,7 +44,7 @@ public static partial class LoggingExtensions
         3,
         LogLevel.Information,
         "DELETE cacheKey={cacheKey}",
-        EventName = HttpRequestMethodNames.Delete
+        HttpRequestMethodNames.Delete
     )]
     public static partial void LogDelete(this ILogger logger, string cacheKey);
 
@@ -52,7 +52,7 @@ public static partial class LoggingExtensions
         4,
         LogLevel.Information,
         "FIND key like \"{pattern}\", range: {range}",
-        EventName = "FIND"
+        "FIND"
     )]
     public static partial void LogFindKeys(
         this ILogger logger,
@@ -64,7 +64,7 @@ public static partial class LoggingExtensions
         100,
         LogLevel.Information,
         "Sending {request}...",
-        EventName = "SENDING_REQUEST"
+        "SENDING_REQUEST"
     )]
     public static partial void LogSendingRequest(
         this ILogger logger,

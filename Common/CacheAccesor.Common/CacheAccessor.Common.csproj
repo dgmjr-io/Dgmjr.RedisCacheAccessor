@@ -18,6 +18,6 @@
         <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
         <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
         <PackageReference Include="System.Text.Json.Usings" />
-        <ProjectReference Include="Dgmjr.Http.Meta" />
+        <PackageReference Include="Dgmjr.Http.Meta" />
     </ItemGroup>
 </Project>
