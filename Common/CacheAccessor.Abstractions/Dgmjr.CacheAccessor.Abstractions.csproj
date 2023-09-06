@@ -25,7 +25,7 @@
     <PackageReference Include="AnyOf.System.Text.Json" />
     <PackageReference Include="StackExchange.Redis" VersionOverride="2.6.96" />
     <PackageReference Include="Dgmjr.System.Extensions" />
-    <ProjectReference Include="../CacheAccesor.Common/CacheAccesor.Common.csproj" />
+    <ProjectReference Include="../CacheAccessor.Common/Dgmjr.CacheAccessor.Common.csproj" />
   </ItemGroup>
 
 </Project>

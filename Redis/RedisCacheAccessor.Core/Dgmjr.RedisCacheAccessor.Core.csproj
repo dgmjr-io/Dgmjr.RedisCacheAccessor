@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,9 +9,9 @@
     <PackageReference Include="Microsoft.Extensions.Logging" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="StackExchange.Redis" VersionOverride="2.6.96" />
-    <ProjectReference Include="../Dgmjr.RedisCacheAccessor.Abstractions/Dgmjr.RedisCacheAccessor.Abstractions.csproj" />
-   <PackageReference Include="System.Text.Json.Usings"  />
-   <PackageReference Include="Dgmjr.Payloads"  />
+    <ProjectReference Include="../RedisCacheAccessor.Abstractions/Dgmjr.RedisCacheAccessor.Abstractions.csproj" />
+    <PackageReference Include="System.Text.Json.Usings"  />
+    <PackageReference Include="Dgmjr.Payloads"  />
   </ItemGroup>
 
 </Project>

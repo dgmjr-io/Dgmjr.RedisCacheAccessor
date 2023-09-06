@@ -27,19 +27,19 @@ These methods can be used to call <c>PUT</c> or <c>POST</c> requests to an HTTP 
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-    <PackageReference Include="Swashbuckle.AspNetCore" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
-    <ProjectReference Include="../Common/CacheAccesor.Common/CacheAccesor.Common.csproj" />
-    <ProjectReference Include="../Common/CacheAccesor.Abstractions/Dgmjr.CacheAccessor.Abstractions.csproj" />
-    <PackageReference Include="System.Net.Mime.MediaTypeNames" />
     <PackageReference Include="AnyOf.System.Text.Json" />
-    <PackageReference Include="Dgmjr.Payloads" />
     <PackageReference Include="Dgmjr.AspNetCore.Startup" />
-    <SourceGenerator  Include="Dgmjr.RegexDtoGenerator" />
+    <PackageReference Include="Dgmjr.Payloads" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Microsoft.Extensions.Logging.ApplicationInsights" />
-    <PackageReference Include="Microsoft.Extensions.Logging.ApplicationInsights" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="System.Net.Mime.MediaTypeNames" />
     <PackageReference Include="ThisAssembly.Project" />
+    <ProjectReference Include="../Common/CacheAccessor.Abstractions/Dgmjr.CacheAccessor.Abstractions.csproj" />
+    <ProjectReference Include="../Common/CacheAccessor.Common/Dgmjr.CacheAccessor.Common.csproj" />
+    <ProjectReference Include="../Common/CacheAccessor.Constants/Dgmjr.CacheAccessor.Constants.csproj" />
+    <SourceGenerator  Include="Dgmjr.RegexDtoGenerator" />
     <NoWarn Include="NU1605" Reason="Becsuse I fucking said so!" />
   </ItemGroup>
 
