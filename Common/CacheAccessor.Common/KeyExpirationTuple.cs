@@ -12,7 +12,6 @@
 
 namespace CacheAccesor;
 
-
 public struct KeyExpirationTuple : IKeyExpirationTuple
 {
     public string Key { get; set; }

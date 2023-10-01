@@ -48,24 +48,14 @@ public static partial class LoggingExtensions
     )]
     public static partial void LogDelete(this ILogger logger, string cacheKey);
 
-    [LoggerMessage(
-        4,
-        LogLevel.Information,
-        "FIND key like \"{pattern}\", range: {range}",
-        "FIND"
-    )]
+    [LoggerMessage(4, LogLevel.Information, "FIND key like \"{pattern}\", range: {range}", "FIND")]
     public static partial void LogFindKeys(
         this ILogger logger,
         string pattern,
         Dgmjr.Payloads.Range range
     );
 
-    [LoggerMessage(
-        100,
-        LogLevel.Information,
-        "Sending {request}...",
-        "SENDING_REQUEST"
-    )]
+    [LoggerMessage(100, LogLevel.Information, "Sending {request}...", "SENDING_REQUEST")]
     public static partial void LogSendingRequest(
         this ILogger logger,
         SerializableHttpRequest request

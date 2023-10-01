@@ -20,13 +20,13 @@ namespace Dgmjr.RedisCacheAccessor.Core;
 public class CacheConnector : Dgmjr.RedisCacheAccessor.Abstractions.ICacheConnector
 {
     /// <summary>
-    /// Static dictionary to hold all redis connections.  Dictionary key is the 
+    /// Static dictionary to hold all redis connections.  Dictionary key is the
     /// redis cache connection string
     /// </summary>
     private static Dictionary<string, ConnectionMultiplexer> redisConnections;
 
     /// <summary>
-    /// Returns the instance of the redis cache based on the cache 
+    /// Returns the instance of the redis cache based on the cache
     /// connection string passed in.
     /// </summary>
     /// <param name="cacheConnectionString"></param>

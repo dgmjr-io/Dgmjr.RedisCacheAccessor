@@ -58,27 +58,44 @@ public class RedisCacheAccessor : IRedisCacheAccessor
     /// <param name="requestMessage">The request message to send to the http endpoint</param>
     /// <param name="expiration">The expiration time for the cache key</param>
     /// >returns>the cache value for GET requests and the cache key for PUT <returns>
-    public async Task<SerializableHttpResponse> GetFromCacheOrHttpAsync(string cacheConnectionString, string cacheKey, HttpRequestMessage requestMessage, TimeSpan? expiration = null)
+    public async Task<SerializableHttpResponse> GetFromCacheOrHttpAsync(
+        string cacheConnectionString,
+        string cacheKey,
+        HttpRequestMessage requestMessage,
+        TimeSpan? expiration = null
+    )
     {
         IDatabase dbCache = OpenDatabase(cacheConnectionString);
 
         if (await dbCache.KeyExistsAsync(cacheKey))
         {
-            var cachedValue = Deserialize<SerializableHttpResponse>(await dbCache.StringGetAsync(cacheKey));
+            var cachedValue = Deserialize<SerializableHttpResponse>(
+                await dbCache.StringGetAsync(cacheKey)
+            );
             log.LogGet(cacheKey, cachedValue);
             return cachedValue;
         }
         else
         {
-            var cachedValue = new SerializableHttpResponse(await new HttpClient().SendAsync(requestMessage), expiration);
+            var cachedValue = new SerializableHttpResponse(
+                await new HttpClient().SendAsync(requestMessage),
+                expiration
+            );
             if (cachedValue != null)
             {
-                await dbCache.StringSetAsync(cacheKey, Serialize(cachedValue), cachedValue.OriginalExpiration);
+                await dbCache.StringSetAsync(
+                    cacheKey,
+                    Serialize(cachedValue),
+                    cachedValue.OriginalExpiration
+                );
                 log.LogPut(cacheKey, cachedValue, cachedValue.OriginalExpiration);
                 return cachedValue;
             }
         }
-        return new SerializableHttpResponse(new HttpResponseMessage(System.Net.HttpStatusCode.NotFound), expiration);
+        return new SerializableHttpResponse(
+            new HttpResponseMessage(System.Net.HttpStatusCode.NotFound),
+            expiration
+        );
     }
 
     /// <summary>
@@ -86,13 +103,15 @@ public class RedisCacheAccessor : IRedisCacheAccessor
     /// </summary>
     /// <param name="cacheConnectionString">The cache connection string.</param>
     /// <param name="pattern">The pattern to filter the keys. Default is "*"</param>
-    public async Task<string[]> GetKeysFromCacheAsync(string cacheConnectionString, string pattern = "*")
+    public async Task<string[]> GetKeysFromCacheAsync(
+        string cacheConnectionString,
+        string pattern = "*"
+    )
     {
         IDatabase dbCache = OpenDatabase(cacheConnectionString);
         RedisResult rr = await dbCache.ExecuteAsync("keys", pattern);
         return ((RedisKey[]?)rr).Select(k => k.ToString()).ToArray();
     }
-
 
     /// <summary>
     /// Gets an instance of from the cache. If the cache doesn't exist a new instance is created
@@ -101,9 +120,19 @@ public class RedisCacheAccessor : IRedisCacheAccessor
     /// <param name="cacheKey">The cache key to use. This is used to cache the response and can be used to speed up subsequent requests</param>
     /// <param name="requestUrl">The request to fetch</param>
     /// <param name="expiration"></param>
-    public async Task<SerializableHttpResponse> GetFromCacheOrHttpAsync(string cacheConnectionString, string cacheKey, string requestUrl, TimeSpan? expiration = null)
+    public async Task<SerializableHttpResponse> GetFromCacheOrHttpAsync(
+        string cacheConnectionString,
+        string cacheKey,
+        string requestUrl,
+        TimeSpan? expiration = null
+    )
     {
-        return await GetFromCacheOrHttpAsync(cacheConnectionString, cacheKey, new HttpRequestMessage(HttpMethod.Get, requestUrl), expiration);
+        return await GetFromCacheOrHttpAsync(
+            cacheConnectionString,
+            cacheKey,
+            new HttpRequestMessage(HttpMethod.Get, requestUrl),
+            expiration
+        );
     }
 
     /// <summary>
@@ -114,7 +143,13 @@ public class RedisCacheAccessor : IRedisCacheAccessor
     /// <param name="constantValue">The constant value to retrieve or store.</param>
     /// <param name="mimeType">The mime type of the value. Defaults to text / plain.</param>
     /// <param name="expiration">The expiration of the value. Defaults to 24 hours</param>
-    public async Task<SerializableHttpResponse> GetFromCacheOrConstantValueAsync(string cacheConnectionString, string cacheKey, string constantValue, string mimeType = TextMediaTypeNames.Plain, TimeSpan? expiration = null)
+    public async Task<SerializableHttpResponse> GetFromCacheOrConstantValueAsync(
+        string cacheConnectionString,
+        string cacheKey,
+        string constantValue,
+        string mimeType = TextMediaTypeNames.Plain,
+        TimeSpan? expiration = null
+    )
     {
         var db = OpenDatabase(cacheConnectionString);
         if (db.KeyExists(cacheKey))
@@ -135,8 +170,19 @@ public class RedisCacheAccessor : IRedisCacheAccessor
         }
     }
 
-    public Task<SerializableHttpResponse> GetFromCacheOrConstantValueAsync(string cacheConnectionString, string cacheKey, string constatntValue, TimeSpan? expiration = null)
-        => GetFromCacheOrConstantValueAsync(cacheConnectionString, cacheKey, constatntValue, TextMediaTypeNames.Plain, expiration);
+    public Task<SerializableHttpResponse> GetFromCacheOrConstantValueAsync(
+        string cacheConnectionString,
+        string cacheKey,
+        string constatntValue,
+        TimeSpan? expiration = null
+    ) =>
+        GetFromCacheOrConstantValueAsync(
+            cacheConnectionString,
+            cacheKey,
+            constatntValue,
+            TextMediaTypeNames.Plain,
+            expiration
+        );
 
     /// <summary>
     /// Gets keys from cache. This is used to implement Cache. GetKeys () and Cache. GetCachedKeys (... )
@@ -162,7 +208,6 @@ public class RedisCacheAccessor : IRedisCacheAccessor
     {
         return ToDataUri(data.ToUTF8Bytes(), mimeType);
     }
-
 
     /// <summary>
     /// Converts a byte array to a data URI. This is used to create an object that can be used as a data URI and is suitable for sending to the server

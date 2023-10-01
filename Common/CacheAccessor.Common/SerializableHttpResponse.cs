@@ -143,7 +143,8 @@ public class SerializableHttpResponse
         CreatedDateTime = DateTimeOffset.UtcNow;
     }
 
-    public SerializableHttpResponse() : this(default(TimeSpan?)) { }
+    public SerializableHttpResponse()
+        : this(default(TimeSpan?)) { }
 
     public static SerializableHttpResponse NoContent() =>
         new(default(TimeSpan?))
