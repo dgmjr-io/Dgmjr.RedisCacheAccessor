@@ -12,7 +12,7 @@
 
 namespace CacheAccesor;
 
-public abstract class CacheConfiguration : ICacheConfiguration1
+public abstract class CacheConfiguration : ICacheConfiguration
 {
     public Cachelocation CacheLocation { get; set; } = CacheLocation.Memory;
     public string? ConnectionString { get; set; }

@@ -14,7 +14,7 @@ Used to cache <c>GET</c> requests from an HTTP service.  Cannnot be used to send
 
 ## PUT or POST
 
-These methods can be used to call <c>PUT</c> or <c>POST</c> requests to an HTTP service.  They receive a payload of the type <c>HttpRequestMessage</c>, which contains all the information required to <c>put</c> or <c>post</c> to the requested HTTP endpoint.  
+These methods can be used to call <c>PUT</c> or <c>POST</c> requests to an HTTP service.  They receive a payload of the type <c>HttpRequestMessage</c>, which contains all the information required to <c>put</c> or <c>post</c> to the requested HTTP endpoint.
 
 *Note if sending header information along with a <c>get</c> request, these can be used for that purpose too.  Simply set their HTTP methods to <c>get</c>*.
 </Description>
@@ -39,7 +39,7 @@ These methods can be used to call <c>PUT</c> or <c>POST</c> requests to an HTTP 
     <ProjectReference Include="../Common/CacheAccessor.Abstractions/Dgmjr.CacheAccessor.Abstractions.csproj" />
     <ProjectReference Include="../Common/CacheAccessor.Common/Dgmjr.CacheAccessor.Common.csproj" />
     <ProjectReference Include="../Common/CacheAccessor.Constants/Dgmjr.CacheAccessor.Constants.csproj" />
-    <SourceGenerator  Include="Dgmjr.RegexDtoGenerator" />
+    <PackageReference Include="Dgmjr.RegexDtoGenerator" IncludeAssets="Analyzers;Build" ExcludeAssets="Native;BuildTransitive;BuildMultitargeting;ContentFiles;Compile;Runtime" PrivateAssets="All" />
     <NoWarn Include="NU1605" Reason="Becsuse I fucking said so!" />
   </ItemGroup>
 

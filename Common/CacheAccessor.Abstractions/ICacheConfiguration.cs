@@ -12,7 +12,7 @@
 
 namespace CacheAccesor.Abstractions;
 
-public interface ICacheConfiguration1
+public interface ICacheConfiguration
 {
     Cachelocation CacheLocation { get; set; }
     string ConnectionString { get; set; }

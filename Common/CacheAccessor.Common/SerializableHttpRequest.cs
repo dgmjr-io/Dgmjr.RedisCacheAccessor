@@ -14,7 +14,7 @@ using System.Net.Http.Headers;
 
 namespace CacheAccesor;
 
-using System.Net.Http;
+using Dgmjr.Http.Headers;
 using System.Text;
 using AnyOfTypes;
 using AnyOfTypes.System.Text.Json;
@@ -22,11 +22,11 @@ using AnyOfTypes.System.Text.Json;
 public class SerializableHttpRequest
 {
     public Uri RequestUri { get; set; }
-    public System.Net.Http.Enums.HttpRequestMethod Method { get; set; }
+    public Dgmjr.Http.Abstractions.IHttpRequestMethod Method { get; set; }
     public string ContentType
     {
         get =>
-            Headers.TryGetValue(HttpRequestHeaderNames.ContentType, out var contentType)
+            Headers.TryGetValue(HttpRequestHeaderNames.ContentType.DisplayName, out var contentType)
                 ? contentType
                 : ApplicationMediaTypeNames.OctetStream;
         set => Headers[HttpRequestHeaderNames.ContentType] = value;
